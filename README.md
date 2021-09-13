@@ -7,7 +7,7 @@ This project is based on the [Spring Boot](http://projects.spring.io/spring-boot
 
 ## Swagger
  
-http://localhost:9999/swagger-ui/index.html
+http://localhost:9999/swagger-ui.html
  
 
 ## Installation 
