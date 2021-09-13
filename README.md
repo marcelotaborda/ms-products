@@ -1,14 +1,13 @@
 # springboot-productms
 
-Spring Boot CRUD demo is demonstrating how to implement simple CRUD operations with a `Product` entity.
+Spring Boot CRUD is demonstrating how to implement simple CRUD operations with a `Product` entity.
 
 ## What's inside 
 This project is based on the [Spring Boot](http://projects.spring.io/spring-boot/) :
 
-## API 
+## Swagger
  
- 
-
+http://localhost:9999/swagger-ui/index.html
  
 
 ## Installation 
@@ -21,9 +20,8 @@ spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.url=jdbc:h2:mem:msproduct
 spring.datasource.username=sa
 spring.datasource.password=
-Console
-[http://localhost:9999/h2-console](http://localhost:9999/h2-console)
-```
+
+Console H2 - http://localhost:9999/h2-console
 
 ## Usage 
 Run the project through the IDE and head out to [http://localhost:9999](http://localhost:9999)
