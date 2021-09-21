@@ -10,11 +10,8 @@ import com.taborda.productms.application.domain.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product>{
 
 	 
-	default List<Product> search(String q, double min_price, double max_price) {
-	    return findAll(FilterProductSpecification.findProduct( q,  min_price,  max_price));
+	default List<Product> findFilters(String q, double minPrice, double maxPrice) {
+	    return findAll(FilterProductSpecification.findFilters( q, minPrice,  maxPrice));
 	  }
-	
  
-
-
 }

@@ -19,21 +19,22 @@ public class SwaggerConfiguration {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.taborda.productms"))
-                .paths(PathSelectors.ant("/**"))
-				.build().apiInfo( metaData() );
+                .apis(RequestHandlerSelectors.basePackage("com.taborda.productms.framework.adapter.rest.in"))
+                .paths(PathSelectors.regex("/products.*"))		
+                .build()
+				.apiInfo( metaData() );
 
 	}
 	
 	private ApiInfo metaData() { 
 		
 		return new ApiInfoBuilder()
-				.title("MS-Product - Desafio Fast-Track API Documentation")
-				.description(null)
-				.version(null)
+				.title("MS-Product - Fast-Track API Documentation")
+				.description("Crud Example")
+				.version("1.0")
 				.license(null)				
 				.licenseUrl(null)				
-				.contact(new Contact("", "", ""))
+				.contact(new Contact("Marcelo Taborda", "", "marcelo.vicente@telefonica.com"))
 				.build();
   	 
     }

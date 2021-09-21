@@ -1,9 +1,9 @@
-# springboot-productms
+# springboot-productms 0.1
 
 Spring Boot CRUD is demonstrating how to implement simple CRUD operations with a `Product` entity.
 
 ## What's inside 
-This project is based on the [Spring Boot](http://projects.spring.io/spring-boot/) :
+This project is based on the [Spring Boot](http://projects.spring.io/spring-boot/)
 
 ## Swagger
  

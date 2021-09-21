@@ -14,6 +14,6 @@ public interface ProductPortOut {
 	Product update(long id,ProductDto p) throws ResourceNotFoundException;
 	Product find(Long id) throws ResourceNotFoundException;
 	boolean delete(Long id) throws ResourceNotFoundException;
-	List<Product> search(FiltroDto dto) ;
+	List<Product> findFilters(FiltroDto dto) ;
 	List<Product> list();
 } 

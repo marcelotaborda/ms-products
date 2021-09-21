@@ -1,6 +1,9 @@
 package com.taborda.productms.framework.adapter.repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,40 +15,49 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.taborda.productms.application.domain.Product;
 
-public final class FilterProductSpecification {
+ 
+public final class FilterProductSpecification implements Serializable {
 
-	public static Specification<Product> findProduct(String q, double min_price, double max_price) {
+	 
+	private static final long serialVersionUID = 2638344318581596899L;
+
+	private  FilterProductSpecification() {
+ 	}
+
+	public static Specification<Product> findFilters(String q, double minPrice, double maxPrice) {
 		return new Specification<Product>() {
 
-			Predicate predicateLike = null;
-			Predicate predicateMinPrice = null;
-			Predicate predicateMaxPrice = null;
+			transient  Predicate predicateLike = null;
+			transient Predicate predicateMinPrice = null;
+			transient  Predicate predicateMaxPrice = null;
 
 			private static final long serialVersionUID = -3911920365171490223L;
 
 			@Override
 			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 
-				List<Predicate> predicates = new ArrayList<Predicate>();
+				List<Predicate> predicates = new ArrayList<>();
 
 				if (null != q) {
-					predicateLike = criteriaBuilder.or(criteriaBuilder.like(root.get("name"), "%" + q + "%"),
-							criteriaBuilder.like(root.get("description"), "%" + q + "%"));
+					predicateLike = criteriaBuilder.or(criteriaBuilder.like(criteriaBuilder.lower(root.get("name")),  criteriaBuilder.lower(criteriaBuilder.literal("%" + q + "%"))),
+							criteriaBuilder.like(criteriaBuilder.lower(root.get("description")), criteriaBuilder.lower(criteriaBuilder.literal("%" + q + "%"))));
 					predicates.add(predicateLike);
 				}
 
-				if (min_price >= 0) {
-					predicateMinPrice = criteriaBuilder.greaterThanOrEqualTo(root.get("price"), min_price);
+				if (minPrice >= 0) {
+					predicateMinPrice = criteriaBuilder.greaterThanOrEqualTo(root.get("price"), minPrice);
 					predicates.add(predicateMinPrice);
 				}
 
-				if (max_price >= 0) {
-					predicateMaxPrice = criteriaBuilder.lessThanOrEqualTo(root.get("price"), max_price);
+				if (maxPrice >= 0) {
+					predicateMaxPrice = criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice);
 					predicates.add(predicateMaxPrice);
 				}
 
 				return query.where(predicates.toArray(Predicate[]::new)).getRestriction();
 			}
+
+			 
 		};
 
 	}
