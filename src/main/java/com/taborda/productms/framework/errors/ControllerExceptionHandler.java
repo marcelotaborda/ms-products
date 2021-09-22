@@ -33,7 +33,7 @@ public class ControllerExceptionHandler {
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public Error methodNotValidException(MethodArgumentNotValidException ex) {
 
-		return new Error(400, INVALID_JSON);
+		return new Error(400, INVALID_VALUE_FOR_PARAMETER);
 	}
 
 

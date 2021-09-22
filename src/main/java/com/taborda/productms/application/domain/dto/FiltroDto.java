@@ -34,7 +34,7 @@ public class FiltroDto {
 	 
 	@Nullable
 	@JsonProperty("min_price")
-	private String min_Price;
+	private String min_price;
 
 	 
 	@Nullable
@@ -55,8 +55,8 @@ public class FiltroDto {
 				
 			}
 
-			if (null != min_Price) {
-				this.minPricedb = Double.parseDouble(min_Price);
+			if (null != min_price) {
+				this.minPricedb = Double.parseDouble(min_price);
 			}
 		} catch (NumberFormatException e) {
 			throw new ValidatedParametersException( INVALID_NUMBER_FOR_PRICE, null, max_price, null, e); 
